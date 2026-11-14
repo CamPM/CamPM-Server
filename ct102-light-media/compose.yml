@@ -1,0 +1,18 @@
+# CT102 light-media on node-b. Live path: /opt/light-media
+# Keep the folder name /opt/light-media. Docker uses it as the project name.
+# Jellyfin image is pinned by digest (12.1.0). No secrets in this file.
+services:
+  jellyfin:
+    image: jellyfin/jellyfin@sha256:78d3ea1207d1322471fcac39a614f004f2ccf7e878f95ab2977d752f07e4dd7e
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - /opt/light-media/jellyfin/config:/config
+      - /mnt/media-nfs:/media
+      - /home/library:/library
+    ports:
+      - 8096:8096
+    restart: unless-stopped

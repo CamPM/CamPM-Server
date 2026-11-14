@@ -1,0 +1,16 @@
+# Output of pvesr list (cluster-wide). Reference only.
+JobID                Target                 Schedule  Rate  Enabled
+100-0                local/node-c            */15     -      yes
+100-1                local/node-b        */15     -      yes
+101-0                local/node-c          */2:00     -      yes
+101-1                local/node-a        */2:00     -      yes
+102-0                local/node-a        */2:00     -      yes
+102-1                local/node-c          */2:00     -      yes
+104-0                local/node-b        *:00     -      yes
+104-1                local/node-a          *:00     -      yes
+105-0                local/node-b      */2:00     -      yes
+105-1                local/node-a        */2:00     -      yes
+108-0                local/node-a          *:00     -      yes
+108-1                local/node-b        *:00     -      yes
+110-0                local/node-a        */15     -      yes
+110-1                local/node-b      */15     -      yes

@@ -1,0 +1,54 @@
+# CT102 ROMM on node-b. Live path: /opt/romm
+# Keep the folder name /opt/romm. Docker uses it as the project name.
+# Secrets are in ./.env on the CT. That file is never in Git.
+# ROMM image is pinned by digest (5.4.0). mariadb:11 is not pinned.
+services:
+  romm-db:
+    image: mariadb:11
+    container_name: romm-db
+    restart: unless-stopped
+    environment:
+      TZ: America/Chicago
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWD}
+      MARIADB_DATABASE: romm
+      MARIADB_USER: romm
+      MARIADB_PASSWORD: ${DB_PASSWD}
+    volumes:
+      - ./mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  romm:
+    image: rommapp/romm@sha256:03295f95a6290e752641f9553ac4198b0e5b71b879d57f7b2371b98f608feb54
+    container_name: romm
+    restart: unless-stopped
+    depends_on:
+      romm-db:
+        condition: service_healthy
+    environment:
+      TZ: America/Chicago
+      DB_HOST: romm-db
+      DB_NAME: romm
+      DB_USER: romm
+      DB_PASSWD: ${DB_PASSWD}
+      ROMM_AUTH_SECRET_KEY: ${ROMM_AUTH_SECRET_KEY}
+      ROMM_BASE_URL: https://games.example.com
+      OIDC_ENABLED: "true"
+      OIDC_PROVIDER: authentik
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
+      OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
+      OIDC_REDIRECT_URI: https://games.example.com/api/oauth/openid
+      OIDC_SERVER_APPLICATION_URL: https://auth.example.com/application/o/romm
+      OIDC_CLAIM_ROLES: groups
+      OIDC_ROLE_ADMIN: home admins
+      OIDC_ROLE_VIEWER: home users
+    volumes:
+      - ./resources:/romm/resources
+      - ./redis:/redis-data
+      - ./assets:/romm/assets
+      - ./config:/romm/config
+      - /mnt/media-nfs/Games:/romm/library/roms:ro
+    ports:
+      - "8090:8080"

@@ -1,0 +1,20 @@
+# CT103 localai on node-c. Live path: /opt/code
+# code-server with its own login OFF. Login is done by the Authentik proxy (embedded outpost on CT110).
+# Port 8080 is limited by the Proxmox firewall (host/cluster/103.fw) to CT110 only.
+# No Git token or SSH key is mounted here on purpose.
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server@sha256:29f84131fa023c006fcfea9afbf0a5f9959c1a0532cf865d8dc8dae69e3c4a17
+    container_name: code-server
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - DEFAULT_WORKSPACE=/workspace
+    ports:
+      - "192.0.2.65:8080:8443"
+    volumes:
+      - /opt/code/config:/config
+      - /opt/code/workspace:/workspace
+      - /opt/code/patch/workbench.html:/app/code-server/lib/vscode/out/vs/code/browser/workbench/workbench.html:ro

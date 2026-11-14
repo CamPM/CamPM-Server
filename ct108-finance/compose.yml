@@ -1,0 +1,44 @@
+# CT108 finance on node-c. Live path: /opt/actual
+# Keep the folder name /opt/actual. Docker uses it as the project name.
+# Secrets: ai.env and mcp.env on the CT. Neither is in Git.
+# Images use the latest tag (not pinned).
+services:
+  actual:
+    image: actualbudget/actual-server:latest
+    environment:
+      TZ: America/Chicago
+    restart: unless-stopped
+    ports:
+      - "5006:5006"
+    volumes:
+      - ./data:/data
+  actual-ai:
+    image: docker.io/sakowicz/actual-ai:latest
+    restart: unless-stopped
+    depends_on:
+      - actual
+    env_file: ai.env
+    environment:
+      TZ: America/Chicago
+      ACTUAL_SERVER_URL: http://actual:5006
+      LLM_PROVIDER: openai
+      OPENAI_BASE_URL: http://192.0.2.169:1234/v1
+      ENABLED_FEATURES: classifyOnStartup,syncAccountsBeforeClassify
+      CLASSIFICATION_SCHEDULE_CRON: "0 */4 * * *"
+      LLM_TIMEOUT_MS: "300000"
+  actual-mcp:
+    image: agigante80/actual-mcp-server:latest
+    restart: unless-stopped
+    depends_on:
+      - actual
+    env_file: mcp.env
+    environment:
+      TZ: America/Chicago
+      ACTUAL_SERVER_URL: http://actual:5006
+      MCP_BRIDGE_PORT: "3600"
+    ports:
+      - "3600:3600"
+    volumes:
+      - actual-mcp-data:/app/data
+volumes:
+  actual-mcp-data:

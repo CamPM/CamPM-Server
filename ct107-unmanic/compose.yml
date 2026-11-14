@@ -1,0 +1,22 @@
+# CT107 unmanic on node-b. Live path: /opt/unmanic
+# Keep the folder name /opt/unmanic. Docker uses it as the project name.
+# Uses the NVIDIA runtime. Image uses the latest tag (not pinned). No secrets.
+services:
+  unmanic:
+    image: josh5/unmanic:latest
+    container_name: unmanic
+    restart: unless-stopped
+    runtime: nvidia
+    environment:
+      TZ: America/Chicago
+      PUID: "1000"
+      PGID: "1000"
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,video,utility
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./config:/config
+      - /mnt/media/Movies:/library/movies
+      - /mnt/media/TVShows:/library/tvshows
+      - /mnt/media/unmanic-cache:/tmp/unmanic

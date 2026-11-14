@@ -1,0 +1,71 @@
+- id: '1786347380515'
+  alias: Home-Notification
+  description: ''
+  triggers:
+  - trigger: persistent_notification
+    update_type:
+    - added
+    notification_id: Home-Notif
+  conditions:
+  - condition: zone.in_zone
+    target:
+      entity_id: device_tracker.cam_s_s25
+    options:
+      behavior: any
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 30
+      zone: zone.home
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    target:
+      area_id:
+      - bedroom
+      - music_room
+    data:
+      color_temp_kelvin: 2000
+      brightness_pct: 100
+    enabled: true
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      area_id: foyer
+      entity_id: switch.kitchen_light
+    data: {}
+  - action: lock.unlock
+    metadata: {}
+    target:
+      area_id: foyer
+    data: {}
+    enabled: false
+  mode: single
+- id: '1786517567227'
+  alias: Home Detect
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - person.cameron_michalak
+    attribute: in_zones
+  conditions:
+  - condition: zone.in_zone
+    target:
+      entity_id: person.cameron_michalak
+    options:
+      behavior: any
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 30
+      zone: zone.home
+  actions:
+  - action: notify.send_message
+    metadata: {}
+    target:
+      device_id: REPLACE_ME
+    data:
+      message: Welcome Home!
+      title: Detect-Notif
+  mode: single

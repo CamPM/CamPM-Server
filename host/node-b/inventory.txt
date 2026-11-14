@@ -1,0 +1,40 @@
+node-b
+pve-manager/9.2.26/41a0e2e09b9e6f9d (running kernel: 7.0.14-28-pve)
+7.0.14-28-pve
+== cpu
+CPU(s):                                  8
+Model name:                              Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz
+CPU(s) scaling MHz:                      93%
+== memory MB
+               total        used        free      shared  buff/cache   available
+Mem:           19768        9648        2345         222        8376       10120
+== disks
+NAME      SIZE TYPE ROTA
+sda       1.8T disk    1
+zd0        32G disk    0
+zd16        1M disk    0
+nvme0n1 476.9G disk    0
+nvme1n1  27.3G disk    0
+== zfs
+NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+backup   1.81T   361G  1.46T        -         -     0%    19%  1.00x    ONLINE  -
+ha-pool   126G  41.9G  84.6G        -         -    49%    33%  1.00x    ONLINE  -
+== storage
+Name                 Type     Status     Total (KiB)      Used (KiB) Available (KiB)        %
+backup-nfs            nfs     active      1714080768       207208448      1506872320   12.09%
+backup-vzdump         dir     active      1714080000       207208448      1506871552   12.09%
+backup-zfs        zfspool     active      1885863936       378992276      1506871660   20.10%
+ha-zfs            zfspool     active       128517264        78005872        50511392   60.70%
+local                 dir     active        98497780        13532856        79915376   13.74%
+mediaNFS              nfs     active      2684059648      2411369472       272690176   89.84%
+tank-zfs          zfspool   disabled               0               0               0      N/A
+== guests
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID       
+       101 haos-18.2            running    4096              32.00 4190      
+VMID       Status     Lock         Name                
+102        running                 light-media         
+103        running                 localai             
+107        running                 unmanic             
+== gpu
+name, memory.total [MiB], driver_version
+NVIDIA GeForce GTX 1660 Ti with Max-Q Design, 6144 MiB, 595.99.02

@@ -1,0 +1,11 @@
+STACK FACTS (do not guess outside these)
+- Proxmox cluster, apps run as Docker Compose inside LXC containers. No Kubernetes, no certbot, no Docker Swarm.
+- Public access: Cloudflare tunnel. HTTPS is handled there.
+- Login: Authentik (OIDC). Apps use their own OIDC settings, or an Authentik proxy provider.
+- One stack per folder: ct1NN-name/ with compose.yml and .env.example. Secrets stay in .env on the CT.
+- Never install software on the editor container (CT103). Never create a new CT. Ask the user.
+- Do not invent tool names or settings. If unsure, say unknown and ask one question.
+- Ask which apps and features are wanted before you plan.
+- Hardware and resources: read host/*/inventory.txt and host/mac-inventory.txt before sizing any CT or model. Guest settings are in host/*/guests/. Do not guess RAM, cores or disk.
+- If the inventory looks old, tell the user to run scripts/pull-inventory.sh on mac-host.
+- Read docs/SYSTEM.md first. Update it when a fact changes.

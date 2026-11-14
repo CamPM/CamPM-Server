@@ -1,0 +1,15 @@
+seerr_media_search:
+  sequence:
+  - sequence:
+    - action: input_text.set_value
+      metadata: {}
+      target:
+        entity_id: input_text.media_search_query
+      data: {}
+    - action: overseerr.search_media
+      metadata: {}
+      data:
+        config_entry_id: 01M1K3VE38WXB25YD18E6A2TDV
+  alias: Seerr Media Search
+  description: Searches Seerr databases for TV shows and Movies to download via qBittorrent.
+  icon: mdi:eye-circle

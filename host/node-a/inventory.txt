@@ -1,0 +1,38 @@
+node-a
+pve-manager/9.2.26/41a0e2e09b9e6f9d (running kernel: 7.0.14-28-pve)
+7.0.14-28-pve
+== cpu
+CPU(s):                                  24
+Model name:                              AMD Ryzen 9 3900X 12-Core Processor
+CPU(s) scaling MHz:                      83%
+== memory MB
+               total        used        free      shared  buff/cache   available
+Mem:           15894        4874        4033          80        7401       11020
+== disks
+NAME      SIZE TYPE ROTA
+sda       2.7T disk    1
+zd0        32G disk    0
+zd16        1M disk    0
+nvme0n1 232.9G disk    0
+== zfs
+NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+ha-pool   139G  42.3G  96.7G        -         -    30%    30%  1.00x    ONLINE  -
+tank     2.72T  2.38T   347G        -         -    18%    87%  1.00x    ONLINE  -
+== storage
+Name                 Type     Status     Total (KiB)      Used (KiB) Available (KiB)        %
+backup-nfs            nfs     active      1714080768       207208448      1506872320   12.09%
+backup-vzdump         dir   disabled               0               0               0      N/A
+backup-zfs        zfspool   disabled               0               0               0      N/A
+ha-zfs            zfspool     active       141231064        78464716        62766348   55.56%
+local                 dir     active        69573880        10980156        55013820   15.78%
+mediaNFS              nfs   disabled               0               0               0      N/A
+tank-zfs          zfspool     active      2856724028      2584034732       272689296   90.45%
+== guests
+VMID       Status     Lock         Name                
+100        running                 pihole              
+106        running                 downloads           
+109        running                 files               
+== gpu
+NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
+
+no nvidia gpu

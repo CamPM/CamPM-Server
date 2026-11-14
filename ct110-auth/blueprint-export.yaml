@@ -1,0 +1,655 @@
+context: {}
+entries:
+- attrs:
+    attributes: {}
+    is_superuser: true
+    name: authentik Admins
+    parents: []
+    roles: []
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    attributes:
+      notes: 'A group with an auto-generated role that allows read-only permissions
+        on all objects.
+
+        '
+    is_superuser: false
+    name: authentik Read-only
+    parents: []
+    roles:
+    - 00000000-0000-0000-0000-000000000000
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    attributes:
+      notes: 'A group with an auto-generated role that allows its members to create
+        agent users.
+
+        '
+    is_superuser: false
+    name: authentik Agent-Users
+    parents: []
+    roles:
+    - 00000000-0000-0000-0000-000000000000
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    attributes: {}
+    is_superuser: false
+    name: jellyfin
+    parents: []
+    roles: []
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    attributes: {}
+    is_superuser: false
+    name: jellyfin-admin
+    parents: []
+    roles: []
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    attributes: {}
+    is_superuser: false
+    name: home admins
+    parents: []
+    roles: []
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    attributes: {}
+    is_superuser: false
+    name: home users
+    parents: []
+    roles: []
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    attributes: {}
+    is_superuser: false
+    name: home-readonly
+    parents: []
+    roles: []
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    attributes: {}
+    is_superuser: false
+    name: ldap-search
+    parents: []
+    roles: []
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.group
+  permissions: []
+  state: present
+- attrs:
+    backchannel_providers: []
+    group: ''
+    meta_description: ''
+    meta_hide: false
+    meta_icon: homeassisstant.png
+    meta_launch_url: https://ha.example.com
+    meta_publisher: ''
+    name: Home Assistant
+    open_in_new_tab: true
+    policy_engine_mode: any
+    provider: 4
+    slug: home-assistant
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.application
+  permissions: []
+  state: present
+- attrs:
+    backchannel_providers: []
+    group: Drive
+    meta_description: ''
+    meta_hide: false
+    meta_icon: opencloud.svg
+    meta_launch_url: https://files.example.com
+    meta_publisher: ''
+    name: OpenCloud
+    open_in_new_tab: true
+    policy_engine_mode: any
+    provider: 8
+    slug: opencloud
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.application
+  permissions: []
+  state: present
+- attrs:
+    backchannel_providers: []
+    group: Media
+    meta_description: ''
+    meta_hide: false
+    meta_icon: jellyfin-icon.png
+    meta_launch_url: https://jellyfin.example.com/sso/OID/start/authentik
+    meta_publisher: ''
+    name: Jellyfin
+    open_in_new_tab: true
+    policy_engine_mode: any
+    provider: 2
+    slug: jellyfin
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.application
+  permissions: []
+  state: present
+- attrs:
+    backchannel_providers: []
+    group: Media
+    meta_description: ''
+    meta_hide: false
+    meta_icon: romm.svg
+    meta_launch_url: https://games.example.com
+    meta_publisher: ''
+    name: ROMM
+    open_in_new_tab: true
+    policy_engine_mode: any
+    provider: 6
+    slug: romm
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.application
+  permissions: []
+  state: present
+- attrs:
+    backchannel_providers: []
+    group: ''
+    meta_description: ''
+    meta_hide: true
+    meta_icon: ''
+    meta_launch_url: ''
+    meta_publisher: ''
+    name: LDAP-Jellyfin
+    open_in_new_tab: false
+    policy_engine_mode: any
+    provider: 15
+    slug: ldap-jellyfin
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.application
+  permissions: []
+  state: present
+- attrs:
+    backchannel_providers: []
+    group: Media
+    meta_description: ''
+    meta_hide: false
+    meta_icon: aurral.svg
+    meta_launch_url: ''
+    meta_publisher: ''
+    name: Aurral
+    open_in_new_tab: true
+    policy_engine_mode: any
+    provider: 19
+    slug: aurral
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.application
+  permissions: []
+  state: present
+- attrs:
+    backchannel_providers: []
+    group: ''
+    meta_description: ''
+    meta_hide: false
+    meta_icon: ''
+    meta_launch_url: ''
+    meta_publisher: ''
+    name: Code Editor
+    open_in_new_tab: true
+    policy_engine_mode: any
+    provider: 21
+    slug: code
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_core.application
+  permissions: []
+  state: present
+- attrs:
+    config:
+      authentik_host: http://192.0.2.67:9000
+      authentik_host_browser: ''
+      authentik_host_insecure: false
+      container_image: null
+      docker_labels: null
+      docker_map_ports: true
+      docker_network: null
+      kubernetes_disable_x509_strict: false
+      kubernetes_disabled_components: []
+      kubernetes_httproute_annotations: {}
+      kubernetes_httproute_parent_refs: []
+      kubernetes_ingress_annotations: {}
+      kubernetes_ingress_class_name: null
+      kubernetes_ingress_path_type: null
+      kubernetes_json_patches: null
+      kubernetes_namespace: default
+      kubernetes_replicas: 1
+      kubernetes_service_type: ClusterIP
+      log_level: info
+      object_naming_template: ak-outpost-%(name)s
+      refresh_interval: minutes=5
+    managed: null
+    name: ldap-outpost
+    providers:
+    - 15
+    service_connection: 00000000-0000-0000-0000-000000000000
+    type: ldap
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_outposts.outpost
+  permissions: []
+  state: present
+- attrs:
+    config:
+      authentik_host: https://auth.example.com
+      authentik_host_browser: ''
+      authentik_host_insecure: false
+      container_image: null
+      docker_labels: null
+      docker_map_ports: true
+      docker_network: null
+      kubernetes_disable_x509_strict: false
+      kubernetes_disabled_components: []
+      kubernetes_httproute_annotations: {}
+      kubernetes_httproute_parent_refs: []
+      kubernetes_ingress_annotations: {}
+      kubernetes_ingress_class_name: null
+      kubernetes_ingress_path_type: null
+      kubernetes_json_patches: null
+      kubernetes_namespace: default
+      kubernetes_replicas: 1
+      kubernetes_service_type: ClusterIP
+      log_level: info
+      object_naming_template: ak-outpost-%(name)s
+      refresh_interval: minutes=5
+    managed: goauthentik.io/outposts/embedded
+    name: authentik Embedded Outpost
+    providers:
+    - 21
+    service_connection: null
+    type: proxy
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_outposts.outpost
+  permissions: []
+  state: present
+- attrs:
+    authentication_flow: null
+    authorization_flow: 00000000-0000-0000-0000-000000000000
+    base_dn: DC=ldap,DC=goauthentik,DC=io
+    bind_mode: cached
+    gid_start_number: 4000
+    invalidation_flow: 00000000-0000-0000-0000-000000000000
+    mfa_support: true
+    name: LDAP for Jellyfin
+    property_mappings: []
+    search_mode: cached
+    tls_server_name: ''
+    uid_start_number: 2000
+  conditions: []
+  identifiers:
+    pk: 15
+  model: authentik_providers_ldap.ldapprovider
+  permissions: []
+  state: present
+- attrs:
+    access_code_validity: minutes=1
+    authentication_flow: null
+    authorization_flow: 00000000-0000-0000-0000-000000000000
+    client_id: REPLACE_ME
+    client_type: confidential
+    encryption_key: null
+    grant_types:
+    - authorization_code
+    - implicit
+    - hybrid
+    - refresh_token
+    - client_credentials
+    - password
+    - urn:ietf:params:oauth:grant-type:device_code
+    invalidation_flow: 00000000-0000-0000-0000-000000000000
+    issuer_mode: per_provider
+    jwt_federation_providers: []
+    jwt_federation_sources: []
+    logout_method: backchannel
+    logout_uri: ''
+    name: Provider for Jellyfin
+    property_mappings:
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    redirect_uris:
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://jellyfin.example.com/sso/OID/redirect/authentik
+    signing_key: 00000000-0000-0000-0000-000000000000
+    sub_mode: hashed_user_id
+  conditions: []
+  identifiers:
+    pk: 2
+  model: authentik_providers_oauth2.oauth2provider
+  permissions: []
+  state: present
+- attrs:
+    access_code_validity: minutes=1
+    authentication_flow: null
+    authorization_flow: 00000000-0000-0000-0000-000000000000
+    client_id: REPLACE_ME
+    client_type: confidential
+    encryption_key: null
+    grant_types:
+    - authorization_code
+    - implicit
+    - hybrid
+    - refresh_token
+    - client_credentials
+    - password
+    - urn:ietf:params:oauth:grant-type:device_code
+    invalidation_flow: 00000000-0000-0000-0000-000000000000
+    issuer_mode: per_provider
+    jwt_federation_providers: []
+    jwt_federation_sources: []
+    logout_method: backchannel
+    logout_uri: ''
+    name: Provider for Home Assistant
+    property_mappings:
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    redirect_uris:
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://ha.example.com/auth/oidc/callback
+    signing_key: 00000000-0000-0000-0000-000000000000
+    sub_mode: hashed_user_id
+  conditions: []
+  identifiers:
+    pk: 4
+  model: authentik_providers_oauth2.oauth2provider
+  permissions: []
+  state: present
+- attrs:
+    access_code_validity: minutes=1
+    authentication_flow: null
+    authorization_flow: 00000000-0000-0000-0000-000000000000
+    client_id: REPLACE_ME
+    client_type: confidential
+    encryption_key: null
+    grant_types:
+    - authorization_code
+    - implicit
+    - hybrid
+    - refresh_token
+    - client_credentials
+    - password
+    - urn:ietf:params:oauth:grant-type:device_code
+    invalidation_flow: 00000000-0000-0000-0000-000000000000
+    issuer_mode: per_provider
+    jwt_federation_providers: []
+    jwt_federation_sources: []
+    logout_method: backchannel
+    logout_uri: ''
+    name: Provider for ROMM
+    property_mappings:
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    redirect_uris:
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://games.example.com/api/oauth/openid
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://games.example.com/api/oauth/openid
+    signing_key: 00000000-0000-0000-0000-000000000000
+    sub_mode: hashed_user_id
+  conditions: []
+  identifiers:
+    pk: 6
+  model: authentik_providers_oauth2.oauth2provider
+  permissions: []
+  state: present
+- attrs:
+    access_code_validity: minutes=1
+    authentication_flow: null
+    authorization_flow: 00000000-0000-0000-0000-000000000000
+    client_id: web
+    client_type: public
+    encryption_key: null
+    grant_types:
+    - authorization_code
+    - implicit
+    - hybrid
+    - refresh_token
+    - client_credentials
+    - password
+    - urn:ietf:params:oauth:grant-type:device_code
+    invalidation_flow: 00000000-0000-0000-0000-000000000000
+    issuer_mode: per_provider
+    jwt_federation_providers: []
+    jwt_federation_sources: []
+    logout_method: backchannel
+    logout_uri: ''
+    name: Provider for OpenCloud
+    property_mappings:
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    redirect_uris:
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: oc://android.opencloud.eu
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: oc://ios.opencloud.eu
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://files.example.com/oidc-callback.html
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://files.example.com/
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://files.example.com/oidc-silent-redirect.html
+    signing_key: 00000000-0000-0000-0000-000000000000
+    sub_mode: hashed_user_id
+  conditions: []
+  identifiers:
+    pk: 8
+  model: authentik_providers_oauth2.oauth2provider
+  permissions: []
+  state: present
+- attrs:
+    access_code_validity: minutes=1
+    authentication_flow: 00000000-0000-0000-0000-000000000000
+    authorization_flow: 00000000-0000-0000-0000-000000000000
+    client_id: REPLACE_ME
+    client_type: confidential
+    encryption_key: null
+    grant_types:
+    - authorization_code
+    - implicit
+    - hybrid
+    - refresh_token
+    - client_credentials
+    - password
+    - urn:ietf:params:oauth:grant-type:device_code
+    invalidation_flow: 00000000-0000-0000-0000-000000000000
+    issuer_mode: per_provider
+    jwt_federation_providers: []
+    jwt_federation_sources: []
+    logout_method: backchannel
+    logout_uri: ''
+    name: Provider for Aurral
+    property_mappings:
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    redirect_uris:
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://music.example.com/sso/callback
+    signing_key: 00000000-0000-0000-0000-000000000000
+    sub_mode: hashed_user_id
+  conditions: []
+  identifiers:
+    pk: 19
+  model: authentik_providers_oauth2.oauth2provider
+  permissions: []
+  state: present
+- attrs:
+    access_code_validity: minutes=1
+    authentication_flow: null
+    authorization_flow: 00000000-0000-0000-0000-000000000000
+    client_id: REPLACE_ME
+    client_type: confidential
+    encryption_key: null
+    grant_types:
+    - authorization_code
+    - client_credentials
+    - password
+    invalidation_flow: 00000000-0000-0000-0000-000000000000
+    issuer_mode: per_provider
+    jwt_federation_providers: []
+    jwt_federation_sources: []
+    logout_method: backchannel
+    logout_uri: ''
+    name: Provider for Code Editor
+    property_mappings:
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    redirect_uris:
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://code.example.com/outpost.goauthentik.io/callback?X-authentik-auth-callback=true
+    - matching_mode: strict
+      redirect_uri_type: authorization
+      url: https://code.example.com?X-authentik-auth-callback=true
+    signing_key: null
+    sub_mode: hashed_user_id
+  conditions: []
+  identifiers:
+    pk: 21
+  model: authentik_providers_oauth2.oauth2provider
+  permissions: []
+  state: present
+- attrs:
+    authentication_flow: null
+    authorization_flow: 00000000-0000-0000-0000-000000000000
+    basic_auth_enabled: false
+    basic_auth_user_attribute: ''
+    cookie_domain: ''
+    external_host: https://code.example.com
+    intercept_header_auth: true
+    internal_host: http://192.0.2.65:8080
+    internal_host_ssl_validation: true
+    invalidation_flow: 00000000-0000-0000-0000-000000000000
+    jwt_federation_providers: []
+    jwt_federation_sources: []
+    mode: proxy
+    name: Provider for Code Editor
+    property_mappings:
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    - 00000000-0000-0000-0000-000000000000
+    skip_path_regex: ''
+  conditions: []
+  identifiers:
+    pk: 21
+  model: authentik_providers_proxy.proxyprovider
+  permissions: []
+  state: present
+- attrs:
+    name: ak-managed-role--user-2
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_rbac.role
+  permissions: []
+  state: present
+- attrs:
+    name: authentik Read-only
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_rbac.role
+  permissions: []
+  state: present
+- attrs:
+    name: authentik Agent-Users
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_rbac.role
+  permissions: []
+  state: present
+- attrs:
+    name: ak-managed-role--user-12
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_rbac.role
+  permissions: []
+  state: present
+- attrs:
+    name: ldap-search
+  conditions: []
+  identifiers:
+    pk: 00000000-0000-0000-0000-000000000000
+  model: authentik_rbac.role
+  permissions: []
+  state: present

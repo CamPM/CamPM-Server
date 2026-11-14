@@ -1,0 +1,49 @@
+# CT106 downloads on node-a (pinned). Live path: /opt/stack
+# Keep the folder name /opt/stack. Docker uses it as the project name.
+# Secret: gluetun.env (WIREGUARD_PRIVATE_KEY) on the CT. Never in Git.
+# Images use the latest tag (not pinned).
+services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    env_file:
+      - gluetun.env
+    environment:
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - VPN_TYPE=wireguard
+      - SERVER_COUNTRIES=United States
+      - PORT_FORWARD_ONLY=on
+      - VPN_PORT_FORWARDING=on
+      - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://127.0.0.1:8080/api/v2/app/setPreferences 2>&1'
+      - FIREWALL_OUTBOUND_SUBNETS=192.0.2.0/24
+      - TZ=America/Chicago
+      - HTTPPROXY=on
+    ports:
+      - 8888:8888
+      - 8080:8080
+      - 5001:5001
+    volumes:
+      - /opt/stack/gluetun:/gluetun
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - HTTPPROXY=on
+      - WEBUI_PORT=8080
+    volumes:
+      - /opt/stack/qbittorrent:/config
+      - /mnt/disk2:/mnt/disk2
+    restart: unless-stopped
