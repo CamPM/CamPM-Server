@@ -1,0 +1,10 @@
+# Live path: /etc/systemd/system/syncoid-protected.timer (node-b)
+[Unit]
+Description=Nightly pull of protected datasets
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

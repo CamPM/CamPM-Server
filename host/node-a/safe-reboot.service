@@ -1,0 +1,14 @@
+# Live path: /etc/systemd/system/safe-reboot.service (node-a)
+[Unit]
+Description=Stop pinned HA guests before shutdown, start them after boot
+After=pve-cluster.service corosync.service pve-ha-lrm.service pve-guests.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/systemd-run --no-block --unit=safe-reboot-up /usr/local/sbin/safe-reboot.sh up
+ExecStop=/usr/local/sbin/safe-reboot.sh down
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target

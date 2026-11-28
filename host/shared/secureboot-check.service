@@ -1,0 +1,11 @@
+# Live path: /etc/systemd/system/secureboot-check.service (node-b, node-c)
+[Unit]
+Description=Detect Secure Boot re-enable and NVIDIA module load failure after boot (battery-less laptop nodes)
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/secureboot-check.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,114 @@
+# CT105 requests on node-c. Live path: /opt/stack
+# Keep the folder name /opt/stack. Docker uses it as the project name.
+# Secrets: ./.env (LYD key) and /opt/stack/aurral/aurral.env. Neither is in Git.
+services:
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=info
+      - TZ=America/Chicago
+    ports:
+      - 8191:8191
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    ports:
+      - 9696:9696
+    volumes:
+      - /opt/stack/prowlarr:/config
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    ports:
+      - 8989:8989
+    volumes:
+      - /opt/stack/sonarr:/config
+      - /mnt/disk2:/mnt/disk2
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    ports:
+      - 7878:7878
+    volumes:
+      - /opt/stack/radarr:/config
+      - /mnt/disk2:/mnt/disk2
+    restart: unless-stopped
+
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    ports:
+      - 8686:8686
+    volumes:
+      - /opt/stack/lidarr:/config
+      - /mnt/disk2:/mnt/disk2
+    restart: unless-stopped
+
+  seerr:
+    image: ghcr.io/seerr-team/seerr@sha256:d8fab675b55ad293ded98fd71efcfd46054cbad9746534ae1cc4794a88c0b3be
+    container_name: seerr
+    init: true
+    environment:
+      - TZ=America/Chicago
+      - LOG_LEVEL=info
+    ports:
+      - 5055:5055
+    volumes:
+      - /opt/stack/seerr:/app/config
+    restart: unless-stopped
+
+  aurral:
+    image: ghcr.io/lklynet/aurral@sha256:75dd06805e3daefd49eb4f91d19f4110f0ef6eb1d2b13e48ae36120d113b48f0
+    container_name: aurral
+    env_file:
+      - /opt/stack/aurral/aurral.env
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    ports:
+      - "3001:3001"
+    volumes:
+      - /mnt/disk2/external_sub/Media/Music:/mnt/disk2/external_sub/Media/Music:ro
+      - /opt/stack/aurral/config:/config
+    restart: unless-stopped
+
+  lyd:
+    image: angrido/lidarr-downloader:latest
+    container_name: lidarr-youtube-downloader
+    ports:
+      - "5005:5000"
+    volumes:
+      - /opt/stack/lyd/config:/config
+      - /mnt/disk2/external_sub/Media:/mnt/disk2/external_sub/Media
+    environment:
+      - LIDARR_URL=http://192.0.2.60:8686
+      - LIDARR_API_KEY=${LYD_LIDARR_API_KEY:?Lidarr key required in .env}
+      - DOWNLOAD_PATH=/mnt/disk2/external_sub/Media/Download/lyd
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    restart: unless-stopped

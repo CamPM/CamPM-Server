@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Dev: preview this folder",
+      "type": "shell",
+      "command": "bash /workspace/Homelab/ct103-localai/dev.sh",
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Dev: preview a repo by name",
+      "type": "shell",
+      "command": "bash /workspace/Homelab/ct103-localai/dev.sh ${input:repo}",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Dev: stop preview",
+      "type": "shell",
+      "command": "pkill -f 'vite --host'; echo stopped",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    { "id": "repo", "type": "promptString", "description": "Repo folder name in _repos", "default": "game-one" }
+  ]
+}

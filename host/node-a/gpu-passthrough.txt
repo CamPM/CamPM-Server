@@ -1,0 +1,12 @@
+options vfio-pci ids=10de:1e89,10de:10f8,10de:1ad8,10de:1ad9 disable_vga=1
+---
+blacklist nouveau
+options nouveau modeset=0
+blacklist nouveau
+blacklist nvidia
+blacklist nvidia_uvm
+blacklist nvidia_drm
+blacklist nvidia_modeset
+blacklist nvidiafb
+---
+BOOT_IMAGE=/boot/vmlinuz-7.0.14-28-pve root=/dev/mapper/pve-root ro quiet iommu=pt initcall_blacklist=sysfb_init

@@ -1,0 +1,16 @@
+# CT111 dashboard on node-a. Live path: /opt/homarr
+# Keep the folder name /opt/homarr. Docker uses it as the project name.
+# Secrets live in .env on the CT. Never in Git. Image pinned by digest.
+services:
+  homarr:
+    image: ghcr.io/homarr-labs/homarr@sha256:7b3ab85bad2656be6c940b9d26117254edb6d998aeb5b66dfdc795f2e737802a
+    container_name: homarr
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TZ=America/Chicago
+    ports:
+      - "192.0.2.68:7575:7575"
+    volumes:
+      - /opt/homarr/appdata:/appdata

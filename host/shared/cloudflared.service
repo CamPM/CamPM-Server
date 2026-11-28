@@ -1,0 +1,16 @@
+# Live path: /etc/systemd/system/cloudflared.service (all 3 nodes, identical)
+# Token is read from /etc/cloudflared/token. That file is never in Git.
+[Unit]
+Description=Cloudflare Tunnel client
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+TimeoutStartSec=15
+Type=notify
+ExecStart=/usr/bin/cloudflared --no-autoupdate tunnel run --token-file /etc/cloudflared/token
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

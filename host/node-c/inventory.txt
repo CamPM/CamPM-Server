@@ -1,0 +1,35 @@
+node-c
+pve-manager/9.2.26/41a0e2e09b9e6f9d (running kernel: 7.0.14-28-pve)
+7.0.14-28-pve
+== cpu
+CPU(s):                                  12
+Model name:                              13th Gen Intel(R) Core(TM) i5-1335U
+CPU(s) scaling MHz:                      11%
+== memory MB
+               total        used        free      shared  buff/cache   available
+Mem:           11670        5457        3759         259        3041        6213
+== disks
+NAME      SIZE TYPE ROTA
+zd0        32G disk    0
+zd16        1M disk    0
+nvme0n1 476.9G disk    0
+== zfs
+NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+ha-pool   338G  37.4G   301G        -         -    22%    11%  1.00x    ONLINE  -
+== storage
+Name                 Type     Status     Total (KiB)      Used (KiB) Available (KiB)        %
+backup-nfs            nfs     active      1714080768       207208448      1506872320   12.09%
+backup-vzdump         dir   disabled               0               0               0      N/A
+backup-zfs        zfspool   disabled               0               0               0      N/A
+ha-zfs            zfspool     active       343409520        73342136       270067384   21.36%
+local                 dir     active        98497780         6635536        86812696    6.74%
+mediaNFS              nfs     active      2684059648      2411369472       272690176   89.84%
+tank-zfs          zfspool   disabled               0               0               0      N/A
+== guests
+VMID       Status     Lock         Name                
+104        running                 vaultwarden         
+105        running                 requests            
+108        running                 finance             
+110        running                 auth                
+== gpu
+no nvidia gpu

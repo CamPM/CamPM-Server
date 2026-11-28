@@ -1,0 +1,9 @@
+# Live path: /etc/systemd/system/syncoid-protected.service (node-b)
+[Unit]
+Description=Pull protected datasets from node-a
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/syncoid -r root@192.0.2.3:tank/protected backup/protected

@@ -1,0 +1,18 @@
+# CT102 moonlight-web on node-b. Live path: /opt/moonlight
+# Keep the folder name /opt/moonlight. Docker uses it as the project name.
+# Image is pinned by digest (v3.0.2). No secrets in this file.
+services:
+  moonlight-web:
+    image: mrcreativ3001/moonlight-web-stream@sha256:773cc954a2eb0129dbb98dece5dfc62e39cc064db5419e3e967f612a74fe4756
+    container_name: moonlight-web
+    environment:
+      - TZ=America/Chicago
+      - BIND_ADDRESS=0.0.0.0:8080
+      - WEBRTC_PORT_RANGE=40000:40010
+      - WEBRTC_NAT_1TO1_HOST=192.0.2.75
+    volumes:
+      - /opt/moonlight/server:/moonlight-web/server
+    ports:
+      - 192.0.2.75:8085:8080
+      - 192.0.2.75:40000-40010:40000-40010/udp
+    restart: unless-stopped

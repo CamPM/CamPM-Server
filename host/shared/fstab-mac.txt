@@ -1,0 +1,1 @@
+//192.0.2.169/Homelab /mnt/mac/private cifs credentials=/root/.mac-private.cred,uid=101000,gid=101000,file_mode=0664,dir_mode=0775,nofail,_netdev,x-systemd.mount-timeout=15 0 0

@@ -1,0 +1,9 @@
+# Copy to /etc/pve/firewall/102.fw on a cluster node.
+# policy_in ACCEPT keeps Jellyfin and ROMM reachable as today.
+[OPTIONS]
+enable: 1
+policy_in: ACCEPT
+
+[RULES]
+IN ACCEPT -source 192.0.2.67 -p tcp -dport 8085 -log nolog
+IN DROP -p tcp -dport 8085 -log nolog
